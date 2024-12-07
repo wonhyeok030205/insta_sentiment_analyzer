@@ -56,4 +56,3 @@ def select_first(driver):
     first = driver.find_element(By.CSS_SELECTOR, 'div._aagu')
     first.click()
     time.sleep(5)
-
