@@ -1,9 +1,16 @@
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
+from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
+from transformers import LongformerTokenizer, LongformerForSequenceClassification, Trainer, TrainingArguments
+from datasets import load_dataset
+import torch
+import time
+import re
+from bs4 import BeautifulSoup
+import torch
 
 # Edge driver path setup
 edge_driver_path = "./msedgedriver.exe" 
@@ -38,3 +45,14 @@ def go_to_home(driver):
         print("로그인 상태 확인 완료.")
     except Exception as e:
         print(f"홈 페이지로 이동 중 오류 발생: {e}") 
+
+def insta_searching(word):
+    url = 'https://www.instagram.com/explore/tags/' + word
+    driver.get(url)
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div._aagu')))
+    return url
+
+def select_first(driver):
+    first = driver.find_element(By.CSS_SELECTOR, 'div._aagu')
+    first.click()
+    time.sleep(5)
