@@ -1,5 +1,9 @@
 ### Instagram 크롤러 & 감정 분석 프로젝트
 
+- 참고 자료
+
+[Gobo.log](https://velog.io/@xodbs6/Practice-%EC%9D%B8%EC%8A%A4%ED%83%80-%ED%81%AC%EB%A1%A4%EB%A7%81-%EC%B9%B4%EC%B9%B4%EC%98%A4-API-Counter) 님의 게시글을 참고하여 프로젝트를 구현했습니다.
+
 - 프로젝트 개요
 
 본 프로젝트는 Selenium과 Longformer를 이용하여 Instagram에서 특정 키워드를 검색하고 게시물의 내용을 수집하여 감정 분석을 수행하는 Python 기반 크롤러입니다.
@@ -27,8 +31,15 @@ Instagram 로그인: Selenium을 이용하여 사용자의 인스타그램 계�
 
 └── requirements.txt          # 라이브러리 설치 정리
 
-
-
+- 사용한 라이브러리 & 모듈
+selenium	4.27.1	웹 스크래핑 및 브라우저 자동화 (Edge 브라우저 제어, 웹 요소 찾기, 특정 상태 기다리기 등)
+transformers	4.46.3	자연어 처리 (Longformer 모델 사용, 텍스트 분류, 모델 학습 등)
+datasets	3.1.0	Hugging Face Datasets 라이브러리 (데이터셋 로드 및 관리)
+torch	2.5.1	PyTorch 라이브러리 (딥러닝 모델 구축 및 학습)
+time		표준 라이브러리 (시간 관련 함수 제공)
+re		표준 라이브러리 (정규 표현식 사용)
+beautifulsoup4	4.12.3	HTML 및 XML 파싱 (웹 스크래핑)
+<br>
 - 사용 방법
 
 필요한 라이브러리 설치: requirements.txt 파일을 이용하여 필요한 라이브러리를 설치합니다.
@@ -42,8 +53,8 @@ Edge 드라이버 설치:  msedgedriver.exe 파일을 프로젝트 폴더에 위
 
 
 - 협업 정보
-
-팀원: 202434779 소병호, 202434838 조성경, 202434853 최원혁, 202434841 조자현, 202434854 최재진
+리더: 202434779 소병호
+팀원: 202434838 조성경, 202434853 최원혁, 202434841 조자현, 202434854 최재진
 
 - 역할 분담:
 
