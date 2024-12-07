@@ -57,17 +57,3 @@ def select_first(driver):
     first.click()
     time.sleep(5)
 
-    def get_content(driver):
-    html = driver.page_source
-    soup = BeautifulSoup(html, 'html.parser')
-    try: 
-       content_with_hashtags = soup.select('div._a9zs')[0].text
-       content = re.sub(r'#\S+', '', content_with_hashtags)
-    except: 
-        content = ' '
-    
-    tags = re.findall(r'#[^\s#,\\]+', content_with_hashtags)
-    if not tags:
-        tags = [f"#{keyword}"]
-    date = soup.select('time.x1p4m5qa')[0]['datetime'][:10]
-    return [content, date, tags]
