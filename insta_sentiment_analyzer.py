@@ -1,0 +1,40 @@
+from selenium import webdriver
+from selenium.webdriver.edge.service import Service
+from selenium.webdriver.edge.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
+# Edge driver path setup
+edge_driver_path = "./msedgedriver.exe" 
+edge_options = Options()
+edge_options.add_experimental_option("detach", True)
+edge_options.add_experimental_option("excludeSwitches", ["enable-logging"])
+
+service = Service(executable_path=edge_driver_path)
+driver = webdriver.Edge(service=service, options=edge_options)
+
+def insta_login(driver, username, password):
+    """인스타그램 로그인 함수"""
+    driver.get('https://instagram.com')
+    WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.NAME, 'username')))
+
+    login_id = driver.find_element(By.NAME, 'username')
+    login_id.send_keys(username)
+    login_pwd = driver.find_element(By.NAME, 'password')
+    login_pwd.send_keys(password)
+    login_pwd.submit()
+
+    try:
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'button[type="button"]')))
+        print("로그인 성공!")
+    except Exception as e:
+        print(f"로그인 오류: {e}")
+
+def go_to_home(driver):
+    """인스타그램 홈페이지로 이동하는 함수"""
+    try:
+        WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'svg[aria-label="홈"]')))
+        print("로그인 상태 확인 완료.")
+    except Exception as e:
+        print(f"홈 페이지로 이동 중 오류 발생: {e}") 
